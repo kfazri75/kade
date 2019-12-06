@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_marginBottom="@dimen/margin4"
+        android:id="@+id/titleTv"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/margin8"
+        android:textSize="@dimen/font18"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/margin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/goal_details"
+            android:layout_weight=".4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin8"
+            android:text="@string/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/goalDetailTv"
+            android:layout_weight=".7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/margin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/red_card"
+            android:layout_weight=".4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin8"
+            android:text="@string/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/redCardTv"
+            android:layout_weight=".7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/margin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/yellow_card"
+            android:layout_weight=".4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin8"
+            android:text="@string/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/yellowCardTv"
+            android:layout_weight=".7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/margin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/goal_keeper"
+            android:layout_weight=".4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin8"
+            android:text="@string/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/goalKeeperTv"
+            android:layout_weight=".7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/margin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/defence"
+            android:layout_weight=".4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin8"
+            android:text="@string/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/defenseTv"
+            android:layout_weight=".7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/margin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/midfield"
+            android:layout_weight=".4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin8"
+            android:text="@string/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/midfieldTv"
+            android:layout_weight=".7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/margin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/forward"
+            android:layout_weight=".4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin8"
+            android:text="@string/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/forwardTv"
+            android:layout_weight=".7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/margin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/substitutes"
+            android:layout_weight=".4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin8"
+            android:text="@string/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/substitutesTv"
+            android:layout_weight=".7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

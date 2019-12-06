@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/margin4"
+    android:layout_marginStart="@dimen/margin8"
+    android:layout_marginEnd="@dimen/margin8"
+    android:layout_marginBottom="@dimen/margin4"
+    android:elevation="@dimen/margin4"
+    android:background="@drawable/bg_radius"
+    android:padding="@dimen/margin8"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="UseCompoundDrawables, ContentDescription">
+
+    <TextView
+        android:id="@+id/eventNameTv"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:textSize="@dimen/font16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/dateTv"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/font14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/margin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/homeTeamIv"
+                android:src="@drawable/ic_image"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin54" />
+
+            <TextView
+                android:layout_marginTop="@dimen/margin4"
+                android:id="@+id/homeTeamTv"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/font14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/homeScoreTv"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/font36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/font36"
+            android:text="@string/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/awayScoreTv"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/font36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/awayTeamIv"
+                android:src="@drawable/ic_image"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin54" />
+
+            <TextView
+                android:layout_marginTop="@dimen/margin4"
+                android:id="@+id/awayTeamTv"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/font14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Football League</string>
+    <string name="search">Search</string>
+    <string name="no_match_found">No match found</string>
+    <string name="request_error">Request Error</string>
+    <string name="close">Close</string>
+    <string name="colon">:</string>
+    <string name="home">Home</string>
+    <string name="away">Away</string>
+    <string name="goal_details">Goal Details</string>
+    <string name="red_card">Red Card</string>
+    <string name="substitutes">Substitutes</string>
+    <string name="yellow_card">Yellow Card</string>
+    <string name="goal_keeper">Goal Keeper</string>
+    <string name="defence">Defence</string>
+    <string name="midfield">Midfield</string>
+    <string name="forward">Forward</string>
+    <string name="favorite">Favorite</string>
+    <string name="soccer">Soccer</string>
+    <string name="added_to_favorite">Added to favorite</string>
+    <string name="removed_from_favorite">Removed from favorite</string>
+
+</resources>
+
+
