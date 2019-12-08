@@ -1,11 +1,13 @@
 package dev.nuris.footballleague.api
 
+import com.google.gson.Gson
 import dev.nuris.footballleague.http.ApiServices
-import kotlinx.coroutines.GlobalScope
+import dev.nuris.footballleague.model.response.Events
+import dev.nuris.footballleague.model.response.Leagues
+import kotlinx.coroutines.*
 import org.junit.Test
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
-import kotlinx.coroutines.launch
+import org.junit.Assert
+import java.net.URL
 
 class ApiServicesTest {
 
@@ -15,57 +17,47 @@ class ApiServicesTest {
         const val QUERY_SEARCH = "united"
     }
 
+    private fun doRequestAsync(url: String): String = URL(url).readText()
+
     @Test
     fun testRequestLeague() {
-        val apiServices = mock(ApiServices::class.java)
-        GlobalScope.launch {
-            apiServices.getAllLeagueAsync().await().body()?.leagues
-            verify(apiServices.getAllLeagueAsync().await().body()?.leagues)
-        }
+        val expected = Gson().fromJson(doRequestAsync("https://www.thesportsdb.com/api/v1/json/1/search_all_leagues.php?s=Soccer"), Leagues::class.java)
+        val actual = runBlocking { ApiServices().getAllLeagueAsync().await().body() }
+        Assert.assertEquals(expected, actual)
     }
 
     @Test
     fun testRequestDetailLeague() {
-        val apiServices = mock(ApiServices::class.java)
-        GlobalScope.launch {
-            apiServices.getDetailLeagueAsync(ID_LEAGUE).await().body()?.leagues
-            verify(apiServices.getDetailLeagueAsync(ID_LEAGUE).await().body()?.leagues)
-        }
+        val expected = Gson().fromJson(doRequestAsync("https://www.thesportsdb.com/api/v1/json/1/lookupleague.php?id=$ID_LEAGUE"), Leagues::class.java)
+        val actual = runBlocking { ApiServices().getDetailLeagueAsync(ID_LEAGUE).await().body() }
+        Assert.assertEquals(expected, actual)
     }
 
     @Test
     fun testRequestPastMatch() {
-        val apiServices = mock(ApiServices::class.java)
-        GlobalScope.launch {
-            apiServices.getPastEventAsync(ID_LEAGUE).await().body()?.events
-            verify(apiServices.getPastEventAsync(ID_LEAGUE).await().body()?.events)
-        }
+        val expected = Gson().fromJson(doRequestAsync("https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=$ID_LEAGUE"), Events::class.java)
+        val actual = runBlocking { ApiServices().getPastEventAsync(ID_LEAGUE).await().body() }
+        Assert.assertEquals(expected, actual)
     }
 
     @Test
     fun testRequestNextMatch() {
-        val apiServices = mock(ApiServices::class.java)
-        GlobalScope.launch {
-            apiServices.getNextEventAsync(ID_LEAGUE).await().body()?.events
-            verify(apiServices.getNextEventAsync(ID_LEAGUE).await().body()?.events)
-        }
+        val expected = Gson().fromJson(doRequestAsync("https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=$ID_LEAGUE"), Events::class.java)
+        val actual = runBlocking { ApiServices().getNextEventAsync(ID_LEAGUE).await().body() }
+        Assert.assertEquals(expected, actual)
     }
 
     @Test
     fun testRequestDetailsMatch() {
-        val apiServices = mock(ApiServices::class.java)
-        GlobalScope.launch {
-            apiServices.getLookUpEventAsync(ID_MATCH).await().body()?.events
-            verify(apiServices.getLookUpEventAsync(ID_MATCH).await().body()?.events)
-        }
+        val expected = Gson().fromJson(doRequestAsync("https://www.thesportsdb.com/api/v1/json/1/lookupevent.php?id=$ID_MATCH"), Events::class.java)
+        val actual = runBlocking { ApiServices().getLookUpEventAsync(ID_MATCH).await().body() }
+        Assert.assertEquals(expected, actual)
     }
 
     @Test
     fun testRequestSearchMatch() {
-        val apiServices = mock(ApiServices::class.java)
-        GlobalScope.launch {
-            apiServices.getSearchEventAsync(QUERY_SEARCH).await().body()?.events
-            verify(apiServices.getSearchEventAsync(QUERY_SEARCH).await().body()?.events)
-        }
+        val expected = Gson().fromJson(doRequestAsync("https://www.thesportsdb.com/api/v1/json/1/searchevents.php?e=$QUERY_SEARCH"), Events::class.java)
+        val actual = runBlocking { ApiServices().getSearchEventAsync(QUERY_SEARCH).await().body() }
+        Assert.assertEquals(expected, actual)
     }
 }
