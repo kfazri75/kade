@@ -15,7 +15,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name=".module.DetailMatchActivity"/>
+        <activity android:name=".module.SearchActivity"/>
+        <activity android:name=".module.TeamDetailActivity" />
+        <activity android:name=".module.FavoriteActivity" />
+        <activity android:name=".module.DetailMatchActivity" />
         <activity android:name=".module.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

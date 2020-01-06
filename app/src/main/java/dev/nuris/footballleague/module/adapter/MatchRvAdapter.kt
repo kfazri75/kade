@@ -48,7 +48,7 @@ class MatchRvAdapter (private val context: Context,
             awayScoreTv.text = event.intAwayScore.checkNull()
 
             GlideApp.with(context)
-                .load(Utility.linkJersey(event.idHomeTeam!!))
+                .load(Utility.linkJersey(event.idHomeTeam?:""))
                 .placeholder(R.drawable.ic_image)
                 .error(R.drawable.ic_image)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -56,7 +56,7 @@ class MatchRvAdapter (private val context: Context,
                 .into(homeTeamIv)
 
             GlideApp.with(context)
-                .load(Utility.linkJersey(event.idAwayTeam!!))
+                .load(Utility.linkJersey(event.idAwayTeam?:""))
                 .placeholder(R.drawable.ic_image)
                 .error(R.drawable.ic_image)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

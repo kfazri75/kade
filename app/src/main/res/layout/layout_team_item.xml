@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/margin16"
+    android:foreground="?selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="UnusedAttribute, ContentDescription">
+
+    <ImageView
+        android:id="@+id/teamIv"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_image"
+        android:layout_gravity="top"
+        android:layout_marginEnd="@dimen/margin16"
+        android:layout_width="@dimen/margin54"
+        android:layout_height="@dimen/margin54" />
+
+    <LinearLayout
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/teamNameTv"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/descTv"
+            android:layout_marginTop="@dimen/margin8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

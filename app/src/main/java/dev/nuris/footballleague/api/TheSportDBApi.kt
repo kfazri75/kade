@@ -18,7 +18,7 @@ object TheSportDBApi {
         return API_URL + "eventsnextleague.php?id=" + leagueId
     }
 
-    fun getPastEvent(leagueId: String) : String {
+    fun getLastEvent(leagueId: String) : String {
         return API_URL + "eventspastleague.php?id=" + leagueId
     }
 
@@ -29,4 +29,22 @@ object TheSportDBApi {
     fun getSearchEvent(query: String): String {
         return API_URL + "searchevents.php?e=" + query
     }
+
+    fun getTeam(leagueId: String) : String {
+        return API_URL + "lookup_all_teams.php?id=" + leagueId
+    }
+
+    fun getSearchTeams(query: String): String {
+        return API_URL + "searchteams.php?t=" + query
+    }
+
+    fun getTeamDetail(teamId: String) : String {
+        return API_URL + "lookupteam.php?id=" + teamId
+    }
+
+    fun getStanding(leagueId: String): String {
+        return API_URL + "lookuptable.php?l=" + leagueId
+    }
+
+
 }

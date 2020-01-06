@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".module.TeamDetailActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+    
+    <ScrollView
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="@dimen/margin16"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/teamIv"
+                android:src="@drawable/ic_image"
+                android:layout_gravity="center"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/teamNameTv"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/margin16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/leagueNameTV"
+                android:layout_marginTop="@dimen/margin8"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:text="@string/description"
+                android:layout_marginTop="@dimen/margin32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/descTv"
+                android:layout_marginTop="@dimen/margin8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/layout_loading"/>
+    
+</RelativeLayout>

@@ -15,18 +15,21 @@ import dev.nuris.footballleague.helper.setVisible
 import dev.nuris.footballleague.model.Event
 import dev.nuris.footballleague.model.EventResponse
 import dev.nuris.footballleague.module.adapter.MatchRvAdapter
-import dev.nuris.footballleague.module.presenter.NextMatchPresenter
-import dev.nuris.footballleague.module.view.NextMatchView
+import dev.nuris.footballleague.module.presenter.MatchPresenter
+import dev.nuris.footballleague.module.view.MatchView
+import kotlinx.android.synthetic.main.fragment_match.*
 import kotlinx.android.synthetic.main.fragment_match.view.*
-import kotlinx.android.synthetic.main.layout_empty_list.view.*
 import kotlinx.android.synthetic.main.layout_loading.view.*
 
-class NextMatchFragment : Fragment(), NextMatchView {
+class MatchFragment : Fragment(), MatchView {
 
-    private lateinit var presenter: NextMatchPresenter
+    private lateinit var presenter: MatchPresenter
     private lateinit var leagueId: String
-    private lateinit var adapter: MatchRvAdapter
     private lateinit var v: View
+    private var nextMatch = mutableListOf<Event>()
+    private var lastMatch = mutableListOf<Event>()
+    private lateinit var nextAdapter: MatchRvAdapter
+    private lateinit var lastAdapter: MatchRvAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_match, container, false)
@@ -34,22 +37,43 @@ class NextMatchFragment : Fragment(), NextMatchView {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        leagueId = arguments?.getString(Constant.LEAGUE_ID)?:""
-        presenter = NextMatchPresenter(this, ApiRepository(), Gson())
-        presenter.getNextMatchList(leagueId)
         super.onViewCreated(view, savedInstanceState)
+        leagueId = arguments?.getString(Constant.LEAGUE_ID)?:""
+        presenter = MatchPresenter(this, ApiRepository(), Gson())
+        presenter.getNextMatchList(leagueId)
+        presenter.getLastMatchList(leagueId)
+        nextAdapter = assignRvAdapter(nextMatch)
+        lastAdapter = assignRvAdapter(lastMatch)
+        v.nextRv.adapter = nextAdapter
+        v.lastRv.adapter = lastAdapter
     }
 
     override fun showNextMatchList(eventResponse: EventResponse) {
         eventResponse.let {
-            adapter = assignRvAdapter(it.events?: listOf())
-            if (adapter.itemCount == 0) {
-                v.emptyImageCl.setVisible()
-                v.matchRv.setGone()
+            nextMatch.clear()
+            nextMatch.addAll(it.events?: listOf())
+            nextAdapter.notifyDataSetChanged()
+            if (nextAdapter.itemCount == 0) {
+                nextRv.setGone()
+                nextNotFound.setVisible()
             } else {
-                v.emptyImageCl.setGone()
-                v.matchRv.setVisible()
-                v.matchRv.adapter = adapter
+                nextRv.setVisible()
+                nextNotFound.setGone()
+            }
+        }
+    }
+
+    override fun showLastMatchList(eventResponse: EventResponse) {
+        eventResponse.let {
+            lastMatch.clear()
+            lastMatch.addAll(it.events?: listOf())
+            lastAdapter.notifyDataSetChanged()
+            if (lastAdapter.itemCount == 0) {
+                lastRv.setGone()
+                lastNotFound.setVisible()
+            } else {
+                lastRv.setVisible()
+                lastNotFound.setGone()
             }
         }
     }

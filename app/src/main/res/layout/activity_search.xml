@@ -5,18 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.SearchMatchFragment">
+    tools:context=".module.SearchActivity">
+
+    <include layout="@layout/layout_toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchEventRv"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/searchRv"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <include layout="@layout/layout_loading"/>
-
-    <include layout="@layout/layout_empty_list"
+    <include
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        layout="@layout/layout_empty_list"/>
+
+    <include layout="@layout/layout_loading"/>
 
 </RelativeLayout>

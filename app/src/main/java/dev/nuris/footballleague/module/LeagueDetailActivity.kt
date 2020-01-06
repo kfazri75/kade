@@ -1,12 +1,13 @@
 package dev.nuris.footballleague.module
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.gson.Gson
 import dev.nuris.footballleague.R
@@ -46,6 +47,21 @@ class LeagueDetailActivity : AppCompatActivity(), LeagueDetailView {
         }
         presenter = LeagueDetailPresenter(this, ApiRepository(), Gson())
         presenter.getLeagueDetail(leagueId)
+        matchVp.addOnPageChangeListener(pageChangeListener)
+    }
+
+    private val pageChangeListener = object : ViewPager.OnPageChangeListener {
+        override fun onPageScrollStateChanged(state: Int) {}
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+        override fun onPageSelected(position: Int) {
+            if (menu != null) {
+                when(position) {
+                    0 -> menu?.getItem(0)?.isVisible = true
+                    1 -> menu?.getItem(0)?.isVisible = false
+                    2 -> menu?.getItem(0)?.isVisible = true
+                }
+            }
+        }
     }
 
     override fun showLeagueDetail(leagueResponse: LeagueResponse) {
@@ -57,15 +73,11 @@ class LeagueDetailActivity : AppCompatActivity(), LeagueDetailView {
                 .load("${league.strBadge}/preview")
                 .placeholder(R.drawable.ic_image)
                 .error(R.drawable.ic_image)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .priority(Priority.HIGH)
                 .into(badgeIv)
             GlideApp.with(this)
                 .load(league.strBanner)
                 .placeholder(R.drawable.ic_image)
                 .error(R.drawable.ic_image)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .priority(Priority.HIGH)
                 .into(headerIv)
 
             leagueAbl.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
@@ -89,8 +101,8 @@ class LeagueDetailActivity : AppCompatActivity(), LeagueDetailView {
                 }
             })
 
-            val fragmentList = listOf(PastMatchFragment(), NextMatchFragment())
-            val titleList = listOf("Past Match", "Next Match")
+            val fragmentList = listOf(MatchFragment(), StandingFragment(), TeamFragment())
+            val titleList = listOf(getString(R.string.match), getString(R.string.standings), getString(R.string.teams))
             matchVp.adapter = MatchVpAdapter(supportFragmentManager, fragmentList, titleList, leagueId)
             matchTl.setupWithViewPager(matchVp)
         }
@@ -99,6 +111,28 @@ class LeagueDetailActivity : AppCompatActivity(), LeagueDetailView {
     override fun showLoading() = loadingRl.setVisible()
 
     override fun hideLoading() = loadingRl.setGone()
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_search_icon, menu)
+        this.menu = menu
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.itemSearchIcon -> {
+                startActivity(Intent(this, SearchActivity::class.java)
+                    .putExtra(SearchActivity.IS_TEAM,
+                        when(matchVp.currentItem) {
+                            0 -> false
+                            2 -> true
+                            else -> return false
+                    }))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

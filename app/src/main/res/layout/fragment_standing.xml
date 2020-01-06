@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".module.StandingFragment">
+
+    <LinearLayout
+        android:id="@+id/standingLl"
+        android:padding="@dimen/margin16"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/teams"
+            android:gravity="center_vertical"
+            android:layout_marginEnd="@dimen/margin8"
+            android:layout_weight=".4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_weight=".6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/win"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="@dimen/margin4"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:ignore="NestedWeights" />
+
+            <TextView
+                android:text="@string/draw"
+                android:textColor="@android:color/black"
+                android:layout_marginStart="@dimen/margin4"
+                android:layout_marginEnd="@dimen/margin4"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/lost"
+                android:textColor="@android:color/black"
+                android:layout_marginStart="@dimen/margin4"
+                android:layout_marginEnd="@dimen/margin4"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/total"
+                android:textColor="@android:color/black"
+                android:layout_marginStart="@dimen/margin4"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/standingRv"
+        android:layout_below="@+id/standingLl"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <include layout="@layout/layout_loading"/>
+
+</RelativeLayout>

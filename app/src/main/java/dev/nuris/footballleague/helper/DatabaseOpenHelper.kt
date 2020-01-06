@@ -3,9 +3,10 @@ package dev.nuris.footballleague.helper
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import dev.nuris.footballleague.model.Favorite
+import dev.nuris.footballleague.model.FavoriteTeam
 import org.jetbrains.anko.db.*
 
-class DatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "FavoriteEvent.db", null, 1) {
+class DatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorite.db", null, 1) {
     companion object {
         private var instance: DatabaseOpenHelper? = null
 
@@ -32,11 +33,20 @@ class DatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "FavoriteE
             Favorite.AWAY_TEAM_NAME to TEXT,
             Favorite.HOME_SCORE to TEXT,
             Favorite.AWAY_SCORE to TEXT)
+
+        db.createTable(
+            FavoriteTeam.TABLE_FAVORITE_TEAM, true,
+            FavoriteTeam.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+            FavoriteTeam.TEAM_ID to TEXT + UNIQUE,
+            FavoriteTeam.TEAM_NAME to TEXT,
+            FavoriteTeam.TEAM_DESC to TEXT,
+            FavoriteTeam.BADGE to TEXT)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // upgrade tables, as usual
         db.dropTable(Favorite.TABLE_FAVORITE, true)
+        db.dropTable(FavoriteTeam.TABLE_FAVORITE_TEAM, true)
     }
 }
 

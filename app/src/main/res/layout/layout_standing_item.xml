@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="@dimen/margin16"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/teamNameTv"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/margin8"
+        android:layout_marginEnd="@dimen/margin8"
+        android:drawableStart="@drawable/ic_image"
+        android:layout_weight=".4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_weight=".6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/winTv"
+            android:layout_marginEnd="@dimen/margin4"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:ignore="NestedWeights" />
+
+        <TextView
+            android:id="@+id/drawTv"
+            android:layout_marginStart="@dimen/margin4"
+            android:layout_marginEnd="@dimen/margin4"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/lostTv"
+            android:layout_marginStart="@dimen/margin4"
+            android:layout_marginEnd="@dimen/margin4"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/totalTv"
+            android:layout_marginStart="@dimen/margin4"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

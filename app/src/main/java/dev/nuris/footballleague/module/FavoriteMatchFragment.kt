@@ -1,13 +1,10 @@
 package dev.nuris.footballleague.module
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import dev.nuris.footballleague.R
 import dev.nuris.footballleague.helper.Constant
@@ -20,9 +17,8 @@ import kotlinx.android.synthetic.main.fragment_favorite.view.*
 import kotlinx.android.synthetic.main.layout_empty_list.view.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
-import kotlin.collections.ArrayList
 
-class FavoriteFragment : Fragment() {
+class FavoriteMatchFragment : Fragment() {
 
     private lateinit var v: View
     private var favorites: MutableList<Favorite> = mutableListOf()
@@ -68,36 +64,5 @@ class FavoriteFragment : Fragment() {
             intent.putExtra(Constant.EVENT_ID, it.eventId)
             startActivity(intent)
         }
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        requireActivity().menuInflater.inflate(R.menu.menu_search, menu)
-        val itemSearch = menu.findItem(R.id.itemSearch)
-        val searchView = itemSearch.actionView as SearchView
-        searchView.queryHint = getString(R.string.search)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean = false
-            @SuppressLint("DefaultLocale")
-            override fun onQueryTextChange(newText: String?): Boolean {
-                val filteredList = ArrayList(favorites)
-                favorites.forEach {
-                    if (!it.eventName?.toLowerCase()?.contains(newText?.toLowerCase()?:"")!!){
-                        filteredList.remove(it)
-                    }
-                }
-                adapter = assignRvAdapter(filteredList)
-                v.favoriteEventRv.adapter = adapter
-                if (adapter.itemCount <= 0) {
-                    v.emptyImageCl.setVisible()
-                    v.favoriteEventRv.setGone()
-                } else {
-                    v.emptyImageCl.setGone()
-                    v.favoriteEventRv.setVisible()
-                }
-                return false
-            }
-        })
-
-        super.onPrepareOptionsMenu(menu)
     }
 }

@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">Football League</string>
     <string name="search">Search</string>
-    <string name="no_match_found">No match found</string>
-    <string name="request_error">Request Error</string>
-    <string name="close">Close</string>
+    <string name="no_item_found">No item found</string>
     <string name="colon">:</string>
     <string name="home">Home</string>
     <string name="away">Away</string>
@@ -16,9 +14,22 @@
     <string name="midfield">Midfield</string>
     <string name="forward">Forward</string>
     <string name="favorite">Favorite</string>
-    <string name="soccer">Soccer</string>
     <string name="added_to_favorite">Added to favorite</string>
     <string name="removed_from_favorite">Removed from favorite</string>
+    <string name="next_match">Next Match</string>
+    <string name="last_match">Last Match</string>
+    <string name="description">Description</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="teams">Teams</string>
+    <string name="total">Total</string>
+    <string name="lost">Lost</string>
+    <string name="draw">Draw</string>
+    <string name="win">Win</string>
+    <string name="match">Match</string>
+    <string name="standings">Standings</string>
+    <string name="search_teams">Search Teams</string>
+    <string name="search_match">Search Match</string>
 
 </resources>
 
